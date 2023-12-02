@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
 public class Faktur {
-    private String noFaktur;
-    private String namaPelanggan;
+    
     private ArrayList<Barang> daftarBarang = new ArrayList<>();
     private double totalBayar;
 
@@ -10,33 +9,39 @@ public class Faktur {
         if (noFaktur == null || noFaktur.isEmpty() || namaPelanggan == null || namaPelanggan.isEmpty()) {
             throw new MinimarketException("Input tidak valid");
         }
-
-        this.noFaktur = noFaktur;
-        this.namaPelanggan = namaPelanggan;
     }
 
+    // Metode untuk menambahkan barang ke faktur
     public void tambahBarang(Barang barang) {
         daftarBarang.add(barang);
     }
 
+    // Metode untuk mengatur total bayar
     public void setTotalBayar(double totalBayar) {
         this.totalBayar = totalBayar;
     }
 
+    // Metode untuk mendapatkan total bayar
     public double getTotalBayar() {
         return totalBayar;
     }
-
+    
+    // Metode untuk menampilkan faktur
     public void displayFaktur() {
-        System.out.println("No. Faktur: " + noFaktur);
-        System.out.println("Nama Pelanggan: " + namaPelanggan);
-
         System.out.println("Daftar Barang:");
+
         for (Barang barang : daftarBarang) {
-            System.out.println("- " + barang.getNamaBarang() + " | Harga: " + barang.getHarga() +
-                    " | Jumlah: " + barang.getJumlah());
+            System.out.println("Kode Barang       : "+ barang.getKodeBarang());  // Tambahkan informasi Kode Barang
+            System.out.println("Nama Barang       : " + barang.getNamaBarang().toLowerCase());
+            System.out.println("Harga Barang      : " + barang.getHarga());
+            System.out.println("Jumlah Barang     : " + barang.getJumlah());
+            System.out.println("------------------------------");
         }
 
         System.out.println("Total Bayar: " + totalBayar);
+    }
+
+    // Metode untuk mengatur nama kasir
+    public void setNamaKasir(String namaKasir) {
     }
 }
